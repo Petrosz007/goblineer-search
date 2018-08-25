@@ -7,7 +7,6 @@ class App extends Component {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSearch = this.handleSearch.bind(this);
 
         this.state = {
             data: [],
@@ -29,12 +28,10 @@ class App extends Component {
     }
 
     render() {
-        const { data, search, filtered } = this.state;
-
-        
+        const { filtered, search } = this.state;
 
         return (
-            <div>
+            <div className="container">
                 <Search handleChange={this.handleChange} handleSearch={this.handleSearch} />
                 <Table filtered={filtered} />
             </div>
@@ -42,11 +39,19 @@ class App extends Component {
     }
 
     handleChange = event => {
-        const { data } = this.state;
         const { value } = event.target;
+        this.setState({
+            search: value
+        });
+
+        const { data } = this.state;
 
         if(value.length >= 4) {
-            let filteredList = data.filter(item => item.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+            let filteredList = data.filter(item => {
+                if(item.name) {
+                    return item.name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+                }
+            });
 
             filteredList.sort((a, b) => {
                 return b.marketvalue - a.marketvalue;
@@ -54,31 +59,9 @@ class App extends Component {
 
             this.setState({
                 filtered: filteredList,
-                search: value
             });
-        } else {
-            this.setState({
-                search: value
-            });
-        }
-
-    }
-
-    handleSearch = () => {
-        const { data, search } = this.state;
-        
-        if(search.length >= 4) {
-            let filteredList = data.filter(item => item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1);
-
-            filteredList.sort((a, b) => {
-                return b.marketvalue - a.marketvalue;
-            });
-
-            this.setState({
-                filtered: filteredList
-            });
+    
         }
     }
 }
-
 export default App;
