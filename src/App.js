@@ -28,7 +28,7 @@ class App extends Component {
     }
 
     render() {
-        const { filtered, search } = this.state;
+        const { filtered } = this.state;
 
         return (
             <div className="container">
@@ -40,14 +40,17 @@ class App extends Component {
 
     handleChange = event => {
         const { value } = event.target;
+
         this.setState({
             search: value
         });
 
-        const { data } = this.state;
-
-        if(value.length >= 4) {
-            let filteredList = data.filter(item => {
+        if(value.length <= 3) {
+            this.setState({
+                filtered: []
+            });
+        } else if(value.length >= 4) {
+            let filteredList = this.state.data.filter(item => {
                 if(item.name) {
                     return item.name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
                 }
@@ -58,7 +61,7 @@ class App extends Component {
             });
 
             this.setState({
-                filtered: filteredList,
+                filtered: filteredList
             });
     
         }

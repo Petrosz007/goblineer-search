@@ -7,8 +7,9 @@ class Search extends Component {
             <input 
                 type="text" 
                 name="search" 
-                placeholder="Type the item you want to search for"
+                placeholder="Type the name of the item you want to search for"
                 className="searchField" 
+                autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
                 value={search} 
                 onChange={this.props.handleChange}/>
         );
