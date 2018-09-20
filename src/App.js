@@ -16,7 +16,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const url = "https://goblineer.tk/json/mv_names.json";
+        const url = "https://goblineer.net/json/mv_names.json";
 
         fetch(url)
             .then(result => result.json())
