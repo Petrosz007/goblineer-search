@@ -7,7 +7,7 @@ class Table extends Component {
 
     render() {
         const TableHead = (props) => {
-            if(props.filtered.length != 0) {
+            if(props.filtered.length !== 0) {
                 return (
                     <thead>
                         <th><b>Name</b></th>
@@ -23,7 +23,7 @@ class Table extends Component {
         const TableBody = (props) => {
             const rows = props.filtered.map((item, index) => {
                 return <tr key={index}>
-                            <td className="tdAlignLeft"><a href={'https://www.goblineer.tk/item/' + item.item} target="_blank" className='q3 iconmedium1 links' rel={'item=' + item.item} Name="text-center"></a></td>
+                            <td className="tdAlignLeft"><a href={'https://www.goblineer.net/item/' + item.item} target="_blank" className='q3 iconmedium1 links' rel={'item=' + item.item} Name="text-center"></a></td>
                             <td className="tdAlignRight">{this.numberFormat(item.MIN)}<span class='gold-g'>g </span></td>
                             <td className="tdAlignRight">{this.numberFormat(item.marketvalue)}<span class='gold-g'>g </span></td>
                             <td className="tdAlignRight">{this.thousandPlaceFormat(item.quantity)}</td>

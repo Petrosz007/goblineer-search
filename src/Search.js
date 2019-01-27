@@ -8,6 +8,7 @@ class Search extends Component {
                 type="text" 
                 name="search" 
                 placeholder="Type the name of the item you want to search for"
+                id="searchField" 
                 className="searchField" 
                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
                 value={search} 

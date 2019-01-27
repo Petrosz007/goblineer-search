@@ -32,8 +32,11 @@ class App extends Component {
 
         return (
             <div className="container">
-                <Search handleChange={this.handleChange} handleSearch={this.handleSearch} />
-                <Table filtered={filtered} />
+                <div id="searchBox" className="searchBox">
+                    <h1 className="title">Goblineer</h1>
+                    <Search handleChange={this.handleChange} handleSearch={this.handleSearch} />
+                    <Table filtered={filtered} />
+                </div>
             </div>
         );
     }
@@ -49,7 +52,19 @@ class App extends Component {
             this.setState({
                 filtered: []
             });
+
+            document.getElementsByClassName('title')[0].style.margin = '0 0 0 0';
+            document.getElementById('searchField').style.width = '800px';
+            document.getElementById('searchField').style.borderRadius = '10px 10px 10px 10px';
+            document.getElementById('searchBox').style.top = '50%';
+            document.getElementById('searchBox').style.margin = '-167px 0 0 0';
         } else if(value.length >= 4) {
+            document.getElementsByClassName('title')[0].style.margin = '-115px 0 0 0';
+            document.getElementById('searchField').style.width = '100%';
+            document.getElementById('searchField').style.borderRadius = '0';
+            document.getElementById('searchBox').style.top = '0';
+            document.getElementById('searchBox').style.margin = '0 0 0 0';
+
             let filteredList = this.state.data.filter(item => {
                 if(item.name) {
                     return item.name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
@@ -63,7 +78,6 @@ class App extends Component {
             this.setState({
                 filtered: filteredList
             });
-    
         }
     }
 }
