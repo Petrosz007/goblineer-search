@@ -94,7 +94,7 @@ body {
 /* Table */
 .mainTable {
 	width: 800px;
-	margin: 0 auto;
+	margin: 35px auto 0 auto;
 	border-collapse: collapse;
 
 	opacity: 1;
@@ -105,6 +105,8 @@ body {
 	-webkit-box-shadow: 0px 0px 53px -13px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 53px -13px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 53px -13px rgba(0,0,0,0.75);
+
+	border-radius: 2px;
 }
 
 .tdAlignLeft {
@@ -147,4 +149,45 @@ body {
 /* Gold spans */
 span.gold-g {
 	color: rgb(221, 153, 53);
- }
+}
+
+/* Navbar */
+.navbar {
+	width: 700px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.nav-items {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+	list-style-type: none;
+
+	padding: 0;
+}
+
+.nav-item {
+	color: white;
+	font-size: 15px;
+	padding: 10px 20px;
+
+	cursor: pointer;
+
+	transition: color .2s ease-in-out;
+}
+
+.nav-item:hover {
+	color: #43BBFF;
+}
+
+@media(max-width: 800px) {
+	.searchField {
+		width: 90%;
+	}
+
+	.navbar {
+		width: 100%;
+	}
+}
